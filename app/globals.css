@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --muted-light: #94a3b8;
+  --accent: #3b6ff5;
+  --accent-light: #eff6ff;
+  --accent-hover: #2b5de8;
+  --border: #e2e8f0;
+  --card: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-hover: var(--accent-hover);
+  --color-border: var(--border);
+  --color-card: var(--card);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-card: 1.5rem;
+  --radius-button: 9999px;
+
+  --spacing-section: 6rem;
+  --spacing-section-lg: 8rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --spacing-section: 8rem;
+    --spacing-section-lg: 10rem;
+  }
+}
+
+@utility py-section {
+  padding-block: var(--spacing-section);
+}
+
+@utility py-section-lg {
+  padding-block: var(--spacing-section-lg);
+}
+
+@utility text-display {
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+@utility text-hero {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+
+@utility text-heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+@utility text-subheading {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.5;
+}
+
+@utility text-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
