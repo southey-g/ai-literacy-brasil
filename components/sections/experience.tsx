@@ -11,7 +11,7 @@ const benefits = [
 
 const gallery = [
   {
-    src: "/experience/meeting.jpg",
+    src: "/experience/meeting.png",
     alt: "Equipe diversa colaborando em uma sessão prática de trabalho",
     label: "Colaboração prática",
     className: "md:col-span-2 md:row-span-2 min-h-[280px] md:min-h-0",

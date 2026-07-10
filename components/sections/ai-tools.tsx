@@ -17,7 +17,7 @@ const tools: Tool[] = [
   { name: "Midjourney", category: "Imagens", initial: "M" },
   { name: "Runway", category: "Vídeo", initial: "R" },
   { name: "ElevenLabs", category: "Áudio", initial: "E" },
-  { name: "Cursor", category: "Desenvolvimento", initial: "Cu" },
+  { name: "Cursor", category: "Desenvolvimento", initial: "C" },
   { name: "Lovable", category: "Desenvolvimento", initial: "L" },
   { name: "Bolt", category: "Desenvolvimento", initial: "B" },
   { name: "Make", category: "Automação", initial: "Mk" },
