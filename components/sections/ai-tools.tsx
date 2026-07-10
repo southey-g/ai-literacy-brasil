@@ -1,4 +1,5 @@
 import { Section } from "@/components/layout/section";
+import { SectionHeader } from "@/components/layout/section-header";
 
 type Tool = {
   name: string;
@@ -27,16 +28,12 @@ const tools: Tool[] = [
 export function AiTools() {
   return (
     <Section id="ferramentas-de-ia" className="bg-[#f8f9fb]">
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-accent uppercase">
-          Ecossistema
-        </p>
-        <h2 className="text-heading text-foreground">Ferramentas de IA</h2>
-        <p className="mt-5 text-subheading text-foreground/55">
-          Você aprende a usar as ferramentas que o mercado já adotou — do
-          básico à automação avançada.
-        </p>
-      </div>
+      <SectionHeader
+        centered
+        eyebrow="Ecossistema"
+        title="Ferramentas de IA"
+        description="Você aprende a usar as ferramentas que o mercado já adotou — do básico à automação avançada."
+      />
 
       <ul className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-5">
         {tools.map((tool) => (

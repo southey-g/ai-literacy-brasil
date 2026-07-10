@@ -3,6 +3,7 @@ import { Experience } from "@/components/sections/experience";
 import { Faq } from "@/components/sections/faq";
 import { FinalCta } from "@/components/sections/final-cta";
 import { ForBusiness } from "@/components/sections/for-business";
+import { ForWhom } from "@/components/sections/for-whom";
 import { Hero } from "@/components/sections/hero";
 import { Instructors } from "@/components/sections/instructors";
 import { LearningPath } from "@/components/sections/learning-path";
@@ -14,9 +15,10 @@ import { WhyLearnNow } from "@/components/sections/why-learn-now";
 
 export default function Home() {
   return (
-    <main className="flex-1">
+    <main id="main-content" className="flex-1">
       <Hero />
       <WhyLearnNow />
+      <ForWhom />
       <OurMission />
       <WhatYouLearn />
       <Experience />

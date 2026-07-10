@@ -1,4 +1,5 @@
 import { Section } from "@/components/layout/section";
+import { SectionHeader } from "@/components/layout/section-header";
 
 type ClassLocation = {
   city: string;
@@ -33,16 +34,12 @@ function StatusBadge({ status }: { status: ClassLocation["status"] }) {
 export function UpcomingClasses() {
   return (
     <Section id="agenda">
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-accent uppercase">
-          Agenda
-        </p>
-        <h2 className="text-heading text-foreground">Próximas turmas</h2>
-        <p className="mt-5 text-subheading text-foreground/55">
-          Estamos expandindo para novas cidades e modalidades. Garanta sua vaga
-          na turma mais próxima de você.
-        </p>
-      </div>
+      <SectionHeader
+        centered
+        eyebrow="Agenda"
+        title="Próximas turmas"
+        description="Estamos expandindo para novas cidades e modalidades. Garanta sua vaga na turma mais próxima de você."
+      />
 
       <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
         {locations.map((location) => (

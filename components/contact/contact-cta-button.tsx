@@ -4,10 +4,9 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import { Button } from "@/components/ui/button";
 
-import {
-  useContactModal,
-  type ContactModalOptions,
-} from "./contact-modal-provider";
+import type { ContactModalOptions } from "@/lib/contact";
+
+import { useContactModal } from "./contact-modal-provider";
 
 type ContactCtaButtonProps = Omit<
   ComponentPropsWithoutRef<"button">,

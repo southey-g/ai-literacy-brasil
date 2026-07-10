@@ -1,9 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { Section } from "@/components/layout/section";
-
-const linkedInUrl = "https://linkedin.com";
 
 export function Instructors() {
   return (
@@ -16,7 +13,7 @@ export function Instructors() {
           <h2 className="text-display text-foreground">
             Conheça quem vai conduzir sua jornada.
           </h2>
-          <div className="mt-8 space-y-5 text-[0.95rem] leading-relaxed text-foreground/55 md:text-base">
+          <div className="mt-8 space-y-5 text-[0.95rem] leading-relaxed text-subtle md:text-base">
             <p>
             Giovana Southey é engenheira de software com mais de 6 anos de experiência desenvolvendo tecnologia na África do Sul, na Inglaterra e além. Tendo atuado diretamente na indústria em diversos mercados e, atualmente, construindo sua própria startup no Reino Unido, Giovana traz uma perspectiva prática e concreta sobre como a inteligência artificial está transformando a forma como trabalhamos e criamos produtos. Ela participou recentemente da London Tech Week e da London AI Summit, mantendo-se atualizada sobre as conversas globais em torno do desenvolvimento e adoção de IA.
 </p>
@@ -30,11 +27,10 @@ Além de fundar seu novo empreendimento, Giovana também atua como freelancer em
           <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_8px_40px_rgba(15,23,42,0.1)]">
             <Image
               src="/instructors/giovana_profile.png"
-              alt="Instrutor AI Literacy Brasil"
+              alt="Retrato de Giovana Southey, instrutora do AI Literacy Brasil"
               fill
               sizes="(max-width: 1024px) 100vw, 480px"
               className="object-cover object-top"
-              priority={false}
             />
           </div>
         </div>

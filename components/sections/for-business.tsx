@@ -1,5 +1,6 @@
 import { ContactCtaButton } from "@/components/contact/contact-cta-button";
 import { Section } from "@/components/layout/section";
+import { SectionHeader } from "@/components/layout/section-header";
 
 const areas = [
   {
@@ -79,15 +80,13 @@ const areas = [
 export function ForBusiness() {
   return (
     <Section id="empresas">
+      <SectionHeader
+        centered
+        eyebrow="Corporativo"
+        title="IA para Empresas"
+        description="Capacite sua equipe para utilizar Inteligência Artificial de forma segura e produtiva."
+      />
       <div className="mx-auto max-w-3xl text-center">
-        <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-accent uppercase">
-          Corporativo
-        </p>
-        <h2 className="text-heading text-foreground">IA para Empresas</h2>
-        <p className="mt-5 text-subheading text-foreground/55">
-          Capacite sua equipe para utilizar Inteligência Artificial de forma
-          segura e produtiva.
-        </p>
         <div className="mt-8">
           <ContactCtaButton
             className="min-h-12 px-8 py-4 font-semibold"

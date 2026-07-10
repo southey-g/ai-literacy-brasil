@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden py-section-lg">
+    <section className="relative scroll-mt-20 overflow-hidden py-section-lg md:scroll-mt-24">
       <div className="pointer-events-none absolute inset-0 bg-[#080c14]" aria-hidden>
         <Image
           src="/cta-wave-art.png"
@@ -25,12 +25,12 @@ export function FinalCta() {
             <br />
             <span className="text-accent">já começou.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-subheading text-white/55">
+          <p className="mx-auto mt-6 max-w-xl text-subheading text-white/70">
             Aprenda a utilizar Inteligência Artificial com confiança.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <ContactCtaButton className="min-h-12 min-w-[200px] px-8 py-4 font-semibold">
-              Quero fazer parte →
+              Quero fazer parte
             </ContactCtaButton>
             <Button
               href="#programa"

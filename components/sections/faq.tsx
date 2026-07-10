@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { ContactLink } from "@/components/contact/contact-link";
 import { Section } from "@/components/layout/section";
 
 const faqs = [
@@ -53,12 +52,9 @@ export function Faq() {
           </h2>
           <p className="mt-6 text-[0.95rem] leading-relaxed text-foreground/55 md:text-base">
             Não encontrou o que procurava?{" "}
-            <Link
-              href="#contato"
-              className="font-medium text-foreground underline decoration-foreground/20 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent/30"
-            >
+            <ContactLink className="font-medium text-foreground underline decoration-foreground/20 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent/30">
               Envie uma mensagem
-            </Link>{" "}
+            </ContactLink>{" "}
             e responderemos em até 24 horas.
           </p>
         </div>

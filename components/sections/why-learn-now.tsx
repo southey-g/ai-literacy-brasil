@@ -1,4 +1,5 @@
 import { Section } from "@/components/layout/section";
+import { SectionHeader } from "@/components/layout/section-header";
 
 const cards = [
   {
@@ -74,14 +75,11 @@ const cards = [
 export function WhyLearnNow() {
   return (
     <Section id="por-que-aprender">
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-accent uppercase">
-          Por que agora
-        </p>
-        <h2 className="text-heading text-foreground">
-          Por que aprender IA agora?
-        </h2>
-      </div>
+      <SectionHeader
+        centered
+        eyebrow="Por que agora"
+        title="Por que aprender IA agora?"
+      />
 
       <div className="mt-14 grid gap-5 md:grid-cols-3 md:gap-6">
         {cards.map((card) => (

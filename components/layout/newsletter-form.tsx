@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { Button } from "@/components/ui/button";
+
 export function NewsletterForm() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -15,7 +17,11 @@ export function NewsletterForm() {
 
   if (submitted) {
     return (
-      <p className="text-sm font-medium text-emerald-600">
+      <p
+        role="status"
+        aria-live="polite"
+        className="text-sm font-medium text-emerald-600"
+      >
         Obrigado! Você está na lista.
       </p>
     );
@@ -35,12 +41,9 @@ export function NewsletterForm() {
         placeholder="Seu melhor e-mail"
         className="min-h-11 flex-1 rounded-full border border-border bg-white px-5 text-sm text-foreground placeholder:text-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       />
-      <button
-        type="submit"
-        className="inline-flex min-h-11 items-center justify-center rounded-full bg-accent px-6 text-sm font-semibold text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-      >
+      <Button type="submit" className="min-h-11 px-6 text-sm font-semibold">
         Inscrever-se
-      </button>
+      </Button>
     </form>
   );
 }

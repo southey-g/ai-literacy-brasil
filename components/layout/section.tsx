@@ -14,7 +14,7 @@ export function Section({
   containerClassName = "",
 }: SectionProps) {
   return (
-    <section id={id} className={`py-section ${className}`}>
+    <section id={id} className={`scroll-mt-20 py-section md:scroll-mt-24 ${className}`}>
       <Container className={containerClassName}>{children}</Container>
     </section>
   );
