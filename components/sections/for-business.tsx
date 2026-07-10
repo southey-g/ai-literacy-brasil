@@ -1,5 +1,5 @@
+import { ContactCtaButton } from "@/components/contact/contact-cta-button";
 import { Section } from "@/components/layout/section";
-import { Button } from "@/components/ui/button";
 
 const areas = [
   {
@@ -89,9 +89,15 @@ export function ForBusiness() {
           segura e produtiva.
         </p>
         <div className="mt-8">
-          <Button href="#contato" className="min-h-12 px-8 py-4 font-semibold">
+          <ContactCtaButton
+            className="min-h-12 px-8 py-4 font-semibold"
+            modalOptions={{
+              defaultInterest: "treinamento-corporativo",
+              showCompanyField: true,
+            }}
+          >
             Conheça os treinamentos corporativos
-          </Button>
+          </ContactCtaButton>
         </div>
       </div>
 

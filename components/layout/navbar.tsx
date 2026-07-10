@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/logo";
-import { Button } from "@/components/ui/button";
+import { ContactCtaButton } from "@/components/contact/contact-cta-button";
 import { Container } from "./container";
 
 const navLinks = [
@@ -30,9 +30,9 @@ export function Navbar() {
             ))}
           </div>
 
-          <Button href="#contato" className="relative z-10 px-5 py-2.5 text-sm">
+          <ContactCtaButton className="relative z-10 px-5 py-2.5 text-sm">
             Quero participar
-          </Button>
+          </ContactCtaButton>
         </nav>
       </Container>
     </header>

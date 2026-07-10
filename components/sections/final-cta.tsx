@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Container } from "@/components/layout/container";
+import { ContactCtaButton } from "@/components/contact/contact-cta-button";
 import { Button } from "@/components/ui/button";
 
 export function FinalCta() {
@@ -28,12 +29,9 @@ export function FinalCta() {
             Aprenda a utilizar Inteligência Artificial com confiança.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              href="#contato"
-              className="min-h-12 min-w-[200px] px-8 py-4 font-semibold"
-            >
+            <ContactCtaButton className="min-h-12 min-w-[200px] px-8 py-4 font-semibold">
               Quero fazer parte →
-            </Button>
+            </ContactCtaButton>
             <Button
               href="#programa"
               variant="secondary"
