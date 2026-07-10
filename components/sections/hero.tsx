@@ -1,3 +1,4 @@
+import { ContactCtaButton } from "@/components/contact/contact-cta-button";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { HeroBackground } from "./hero-background";
@@ -71,9 +72,9 @@ export function Hero() {
           </p>
 
           <div className="mb-16 flex flex-col gap-4 sm:flex-row">
-            <Button href="#contato" className="min-h-12 min-w-[200px] px-8 py-4 font-semibold">
+            <ContactCtaButton className="min-h-12 min-w-[200px] px-8 py-4 font-semibold">
               Quero participar
-            </Button>
+            </ContactCtaButton>
             <Button
               href="#treinamentos"
               variant="secondary"

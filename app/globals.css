@@ -88,3 +88,52 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
+
+.contact-phone-input {
+  --PhoneInput-color--focus: var(--accent);
+  --PhoneInputCountryFlag-height: 1.125rem;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: white;
+  padding: 0.125rem 0.25rem 0.125rem 0.75rem;
+  transition: box-shadow 0.15s ease;
+}
+
+.contact-phone-input.PhoneInput--focus {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 4px var(--accent);
+}
+
+.contact-phone-input--error {
+  border-color: #ef4444;
+}
+
+.contact-phone-input--error.PhoneInput--focus {
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 4px #ef4444;
+}
+
+.contact-phone-input .PhoneInputCountry {
+  margin-right: 0.5rem;
+}
+
+.contact-phone-input .PhoneInputInput {
+  border: 0;
+  background: transparent;
+  padding: 0.625rem 0.75rem 0.625rem 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--foreground);
+}
+
+.contact-phone-input .PhoneInputInput::placeholder {
+  color: color-mix(in srgb, var(--foreground) 40%, transparent);
+}
+
+.contact-phone-input .PhoneInputInput:focus {
+  outline: none;
+}
