@@ -132,6 +132,7 @@ export function Program() {
           Programação
         </p>
         <h2 className="text-heading text-foreground">Seu dia, mapeado</h2>
+        <h3 className="text-lg font-medium text-foreground">AI Literacy Bootcamp</h3>
       </div>
 
       <div className="relative mx-auto mt-16 max-w-3xl">

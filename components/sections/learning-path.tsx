@@ -26,7 +26,6 @@ const steps: RoadmapStep[] = [
   },
   {
     title: "Automação com IA",
-    tags: ["Make", "n8n", "Zapier"],
     future: true,
   },
   {
