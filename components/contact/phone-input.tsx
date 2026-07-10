@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import PhoneInput, { type Value } from "react-phone-number-input";
 import pt from "react-phone-number-input/locale/pt-BR.json";
@@ -9,7 +10,7 @@ import "react-phone-number-input/style.css";
 type PhoneInputFieldProps = {
   id?: string;
   value?: Value;
-  onChange: (value: Value) => void;
+  onChange: (value: Value | undefined) => void;
   onBlur?: () => void;
   error?: string;
 };
@@ -31,6 +32,8 @@ export function PhoneInputField({
   onBlur,
   error,
 }: PhoneInputFieldProps) {
+  const errorId = useId();
+
   return (
     <div>
       <PhoneInput
@@ -46,11 +49,12 @@ export function PhoneInputField({
         className={`contact-phone-input${error ? " contact-phone-input--error" : ""}`}
         numberInputProps={{
           "aria-invalid": error ? true : undefined,
+          "aria-describedby": error ? errorId : undefined,
           autoComplete: "tel",
         }}
       />
       {error ? (
-        <p className="mt-1.5 text-sm text-red-600" role="alert">
+        <p id={errorId} className="mt-1.5 text-sm text-red-600" role="alert">
           {error}
         </p>
       ) : null}

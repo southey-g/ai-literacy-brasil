@@ -2,15 +2,19 @@
 
 import type { ComponentPropsWithoutRef } from "react";
 
+import type { ContactModalOptions } from "@/lib/contact";
+
 import { useContactModal } from "./contact-modal-provider";
 
 type ContactLinkProps = ComponentPropsWithoutRef<"button"> & {
   className?: string;
+  modalOptions?: ContactModalOptions;
   children: React.ReactNode;
 };
 
 export function ContactLink({
   onClick,
+  modalOptions,
   className = "",
   children,
   ...props
@@ -22,7 +26,7 @@ export function ContactLink({
       type="button"
       className={`cursor-pointer text-left ${className}`}
       onClick={(event) => {
-        open();
+        open(modalOptions);
         onClick?.(event);
       }}
       {...props}

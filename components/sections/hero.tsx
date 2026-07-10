@@ -7,7 +7,7 @@ const badges = [
   {
     label: "Curitiba",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-[18px] shrink-0">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-[18px] shrink-0" aria-hidden>
         <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z" strokeLinecap="round" strokeLinejoin="round" />
         <circle cx="12" cy="10" r="2.5" />
       </svg>
@@ -16,7 +16,7 @@ const badges = [
   {
     label: "Turmas presenciais",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-[18px] shrink-0">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-[18px] shrink-0" aria-hidden>
         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" strokeLinecap="round" strokeLinejoin="round" />
         <circle cx="9" cy="7" r="4" />
         <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" strokeLinecap="round" strokeLinejoin="round" />
@@ -26,7 +26,7 @@ const badges = [
   {
     label: "Leve seu notebook",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-[18px] shrink-0">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-[18px] shrink-0" aria-hidden>
         <rect x="2" y="4" width="20" height="14" rx="2" />
         <path d="M2 16h20" />
       </svg>
@@ -35,7 +35,7 @@ const badges = [
   {
     label: "Certificado",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-[18px] shrink-0">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-[18px] shrink-0" aria-hidden>
         <path d="M22 10v6M2 10l10-5 10 5-10 5z" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
@@ -45,7 +45,7 @@ const badges = [
 
 export function Hero() {
   return (
-    <section id="hero" className="relative flex min-h-screen flex-col justify-center overflow-hidden">
+    <section id="hero" className="relative flex min-h-screen scroll-mt-20 flex-col justify-center overflow-hidden md:scroll-mt-24">
       <HeroBackground />
 
       <Container className="relative z-10 pt-28 pb-12 md:pt-36 md:pb-16">

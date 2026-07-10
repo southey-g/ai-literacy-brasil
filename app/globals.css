@@ -5,6 +5,7 @@
   --foreground: #0f172a;
   --muted: #64748b;
   --muted-light: #94a3b8;
+  --subtle: #475569;
   --accent: #3b6ff5;
   --accent-light: #eff6ff;
   --accent-hover: #2b5de8;
@@ -17,6 +18,7 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-muted-light: var(--muted-light);
+  --color-subtle: var(--subtle);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
   --color-accent-hover: var(--accent-hover);
@@ -79,8 +81,39 @@
   line-height: 1.7;
 }
 
+@utility text-subtle {
+  color: var(--subtle);
+}
+
+@utility sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {

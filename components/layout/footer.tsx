@@ -2,16 +2,10 @@ import Link from "next/link";
 
 import { Logo } from "@/components/brand/logo";
 import { ContactLink } from "@/components/contact/contact-link";
+import { footerNavLinks } from "@/lib/navigation";
+
 import { Container } from "./container";
 import { NewsletterForm } from "./newsletter-form";
-
-const navLinks = [
-  { href: "#treinamentos", label: "Treinamentos" },
-  { href: "#empresas", label: "Empresas" },
-  { href: "#instrutores", label: "Instrutores" },
-  { href: "#agenda", label: "Agenda" },
-  { href: "#contato", label: "Contato" },
-];
 
 const socialLinks = [
   {
@@ -34,7 +28,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1.2fr] lg:gap-16">
           <div>
             <Logo />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-foreground/55">
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-subtle">
               Educação prática em Inteligência Artificial.
             </p>
             <div className="mt-6 flex items-center gap-4">
@@ -57,31 +51,33 @@ export function Footer() {
             <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-accent uppercase">
               Navegação
             </p>
-            <ul className="space-y-3">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  {link.href === "#contato" ? (
-                    <ContactLink className="text-sm text-foreground/60 transition-colors hover:text-foreground">
-                      {link.label}
-                    </ContactLink>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className="text-sm text-foreground/60 transition-colors hover:text-foreground"
-                    >
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
+            <nav aria-label="Navegação do rodapé">
+              <ul className="space-y-3">
+                {footerNavLinks.map((link) => (
+                  <li key={link.href}>
+                    {link.href === "#contato" ? (
+                      <ContactLink className="text-sm text-subtle transition-colors hover:text-foreground">
+                        {link.label}
+                      </ContactLink>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-subtle transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           <div>
             <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-accent uppercase">
               Newsletter
             </p>
-            <p className="mb-4 text-sm leading-relaxed text-foreground/55">
+            <p className="mb-4 text-sm leading-relaxed text-subtle">
               Receba novidades sobre turmas, conteúdos e ferramentas de IA.
             </p>
             <NewsletterForm />
@@ -89,7 +85,7 @@ export function Footer() {
         </div>
 
         <div className="mt-14 border-t border-black/[0.06] pt-8">
-          <p className="text-sm text-foreground/40">
+          <p className="text-sm text-muted-light">
             © {new Date().getFullYear()} AI Literacy Brasil. Todos os direitos
             reservados.
           </p>

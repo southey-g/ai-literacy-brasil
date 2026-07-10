@@ -4,20 +4,15 @@ import { useEffect, useId, useRef, useState } from "react";
 import type { Value } from "react-phone-number-input";
 
 import { Button } from "@/components/ui/button";
+import {
+  interestOptions,
+  type ContactModalOptions,
+} from "@/lib/contact";
 
 import {
   PhoneInputField,
   validatePhoneNumber,
 } from "./phone-input";
-
-const interestOptions = [
-  { value: "", label: "Selecione uma opção" },
-  { value: "treinamento-presencial", label: "Treinamento presencial" },
-  { value: "treinamento-corporativo", label: "Treinamento corporativo" },
-  { value: "proximas-turmas", label: "Próximas turmas" },
-  { value: "parcerias", label: "Parcerias" },
-  { value: "outro", label: "Outro" },
-] as const;
 
 const selectChevronClassName =
   "appearance-none bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22none%22%20stroke%3D%22%2364748b%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.1rem] bg-[right_0.5rem_center] bg-no-repeat pr-7";
@@ -25,7 +20,14 @@ const selectChevronClassName =
 const fieldClassName =
   "w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2";
 
-import type { ContactModalOptions } from "./contact-modal-provider";
+const FOCUSABLE_SELECTOR =
+  'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+function getFocusableElements(container: HTMLElement) {
+  return Array.from(
+    container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
+  ).filter((element) => element.offsetParent !== null);
+}
 
 type ContactModalProps = {
   isOpen: boolean;
@@ -48,24 +50,38 @@ export function ContactModal({
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (!isOpen) {
-      setSubmitted(false);
-      setPhone(undefined);
-      setPhoneError("");
-    }
-  }, [isOpen]);
-
-  useEffect(() => {
     if (!isOpen) return;
 
     previousFocusRef.current = document.activeElement as HTMLElement | null;
-    const firstField = panelRef.current?.querySelector<HTMLElement>(
-      "input, select, textarea, button",
-    );
-    firstField?.focus();
+
+    const inertTargets = document.querySelectorAll("header, main, footer");
+    inertTargets.forEach((element) => element.setAttribute("inert", ""));
+
+    const panel = panelRef.current;
+    const focusableElements = panel ? getFocusableElements(panel) : [];
+    focusableElements[0]?.focus();
 
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !panel) return;
+
+      const elements = getFocusableElements(panel);
+      if (elements.length === 0) return;
+
+      const first = elements[0];
+      const last = elements[elements.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
 
     const previousOverflow = document.body.style.overflow;
@@ -75,6 +91,7 @@ export function ContactModal({
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
+      inertTargets.forEach((element) => element.removeAttribute("inert"));
       previousFocusRef.current?.focus();
     };
   }, [isOpen, onClose]);
@@ -140,14 +157,18 @@ export function ContactModal({
           <h2 id={titleId} className="mt-3 text-2xl font-semibold tracking-tight text-foreground">
             Quero participar
           </h2>
-          <p id={descriptionId} className="mt-2 text-sm leading-relaxed text-foreground/55">
+          <p id={descriptionId} className="mt-2 text-sm leading-relaxed text-subtle">
             Preencha seus dados e entraremos em contato com mais informações sobre
             treinamentos e turmas.
           </p>
         </div>
 
         {submitted ? (
-          <div className="mt-8 rounded-2xl border border-emerald-100 bg-emerald-50 px-5 py-6 text-center">
+          <div
+            role="status"
+            aria-live="polite"
+            className="mt-8 rounded-2xl border border-emerald-100 bg-emerald-50 px-5 py-6 text-center"
+          >
             <p className="text-base font-semibold text-emerald-800">
               Recebemos seu interesse!
             </p>
@@ -171,7 +192,8 @@ export function ContactModal({
         >
           <div>
             <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-foreground">
-              Nome <span className="text-accent">*</span>
+              Nome <span className="text-accent" aria-hidden="true">*</span>
+              <span className="sr-only"> (obrigatório)</span>
             </label>
             <input
               id="contact-name"
@@ -187,7 +209,8 @@ export function ContactModal({
           {showCompanyField ? (
             <div>
               <label htmlFor="contact-company" className="mb-1.5 block text-sm font-medium text-foreground">
-                Nome da empresa <span className="text-accent">*</span>
+                Nome da empresa <span className="text-accent" aria-hidden="true">*</span>
+                <span className="sr-only"> (obrigatório)</span>
               </label>
               <input
                 id="contact-company"
@@ -203,7 +226,8 @@ export function ContactModal({
 
           <div>
             <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-foreground">
-              E-mail <span className="text-accent">*</span>
+              E-mail <span className="text-accent" aria-hidden="true">*</span>
+              <span className="sr-only"> (obrigatório)</span>
             </label>
             <input
               id="contact-email"
@@ -219,7 +243,7 @@ export function ContactModal({
           <div>
             <label htmlFor="contact-phone" className="mb-1.5 block text-sm font-medium text-foreground">
               Telefone
-              <span className="ml-1 font-normal text-foreground/45">(opcional)</span>
+              <span className="ml-1 font-normal text-subtle">(opcional)</span>
             </label>
             <PhoneInputField
               id="contact-phone"
@@ -238,7 +262,8 @@ export function ContactModal({
 
           <div>
             <label htmlFor="contact-interest" className="mb-1.5 block text-sm font-medium text-foreground">
-              Interesse <span className="text-accent">*</span>
+              Interesse <span className="text-accent" aria-hidden="true">*</span>
+              <span className="sr-only"> (obrigatório)</span>
             </label>
             <select
               id="contact-interest"
@@ -258,7 +283,7 @@ export function ContactModal({
           <div>
             <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-foreground">
               Mensagem
-              <span className="ml-1 font-normal text-foreground/45">(opcional)</span>
+              <span className="ml-1 font-normal text-subtle">(opcional)</span>
             </label>
             <textarea
               id="contact-message"

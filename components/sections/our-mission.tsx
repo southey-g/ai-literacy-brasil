@@ -80,11 +80,11 @@ export function OurMission() {
         <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-accent uppercase">
           Nossa missão
         </p>
-        <p className="text-display text-foreground">
+        <h2 className="text-display text-foreground">
           Democratizar o uso da Inteligência Artificial através de uma educação
           prática que gera{" "}
           <span className="text-accent">resultados reais.</span>
-        </p>
+        </h2>
       </div>
 
       <div className="mt-14 grid gap-5 md:grid-cols-3 md:gap-6">

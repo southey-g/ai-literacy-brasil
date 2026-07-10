@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import {
   createContext,
   useCallback,
@@ -9,12 +10,14 @@ import {
   type ReactNode,
 } from "react";
 
-import { ContactModal } from "./contact-modal";
+import type { ContactModalOptions } from "@/lib/contact";
 
-export type ContactModalOptions = {
-  defaultInterest?: string;
-  showCompanyField?: boolean;
-};
+const ContactModal = dynamic(
+  () => import("./contact-modal").then((module) => module.ContactModal),
+  { ssr: false },
+);
+
+export type { ContactModalOptions, ContactInterest } from "@/lib/contact";
 
 type ContactModalContextValue = {
   open: (options?: ContactModalOptions) => void;
@@ -26,9 +29,11 @@ const ContactModalContext = createContext<ContactModalContextValue | null>(null)
 export function ContactModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [options, setOptions] = useState<ContactModalOptions>({});
+  const [modalKey, setModalKey] = useState(0);
 
   const open = useCallback((nextOptions?: ContactModalOptions) => {
     setOptions(nextOptions ?? {});
+    setModalKey((current) => current + 1);
     setIsOpen(true);
   }, []);
   const close = useCallback(() => {
@@ -41,7 +46,14 @@ export function ContactModalProvider({ children }: { children: ReactNode }) {
   return (
     <ContactModalContext.Provider value={value}>
       {children}
-      <ContactModal isOpen={isOpen} onClose={close} options={options} />
+      {isOpen ? (
+        <ContactModal
+          key={modalKey}
+          isOpen={isOpen}
+          onClose={close}
+          options={options}
+        />
+      ) : null}
     </ContactModalContext.Provider>
   );
 }
